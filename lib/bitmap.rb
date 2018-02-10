@@ -1,7 +1,15 @@
 class Bitmap
-  def create(height, width)
-    bitmap = []
-    height.times { bitmap << Array.new(width, 'O') }
-    bitmap
+
+  attr_reader :bitmap
+
+  def initialize(x, y)
+    @bitmap = create_bitmap(x, y)
   end
+
+private
+    def create_bitmap(x, y)
+      bitmap = []
+      y.times { bitmap << Array.new(x, 'O') }
+      bitmap
+    end
 end

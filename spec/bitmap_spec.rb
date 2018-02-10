@@ -1,13 +1,15 @@
 require 'bitmap'
 
 describe Bitmap do
-  describe '#create' do
-    it 'creates a white bitmap with the given size' do
-      height = 2
-      width = 3
+  before(:each) do
+    @bitmap = Bitmap.new(3, 2)
+  end
+
+  describe '#initialize' do
+    it 'creates a white bitmap with the given size when initialized' do
       bitmap = [['O', 'O', 'O'],
                 ['O', 'O', 'O']]
-      expect(subject.create(height, width)).to eq bitmap
+      expect(@bitmap.bitmap).to eq bitmap
     end
   end
 end
