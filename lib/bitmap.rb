@@ -10,6 +10,14 @@ class Bitmap
     @pixels[y-1][x-1] = colour
   end
 
+  def clear_pixels
+    @pixels.map! do |y|
+      y.map! do |x|
+        x = 'O'
+      end
+    end
+  end
+
 private
     def create_pixels(x, y)
       pixels = []
