@@ -2,8 +2,9 @@ class Bitmap
 
   attr_reader :pixels
 
-  def initialize(x, y)
-    @pixels = create_pixels(x, y)
+  def initialize(size)
+    x, y = size
+    @pixels = create_pixels(x.to_i, y.to_i)
   end
 
   def change_pixel_colour(x, y, colour)

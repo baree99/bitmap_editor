@@ -2,7 +2,8 @@ require 'bitmap'
 
 describe Bitmap do
   before(:each) do
-    @bitmap = Bitmap.new(4, 4)
+    size = [4,4]
+    @bitmap = Bitmap.new(size)
   end
 
   describe '#initialize' do
