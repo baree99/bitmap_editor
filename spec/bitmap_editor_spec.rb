@@ -35,5 +35,11 @@ describe BitmapEditor do
       expect(@bitmap_editor.bitmap).to receive(:change_pixel_colours_vertically).with(['2', '3', '6', 'W'])
       @bitmap_editor.command_interpreter(line)
     end
+
+    it 'delegates to change pixels horizontally' do
+      line = 'H 3 5 2 Z'
+      expect(@bitmap_editor.bitmap).to receive(:change_pixel_colours_horizontally).with(['3', '5', '2', 'Z'])
+      @bitmap_editor.command_interpreter(line)
+    end
   end
 end
