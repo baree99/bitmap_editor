@@ -15,6 +15,9 @@ class BitmapEditor
     when 'I'
       size = line.split(' ')
       @bitmap = Bitmap.new(size)
+    when 'L'
+      args = line.split(' ')
+      @bitmap.change_pixel_colour(args)
     when 'S'
         puts "There is no image"
     else
