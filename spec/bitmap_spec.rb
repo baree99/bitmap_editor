@@ -50,4 +50,15 @@ describe Bitmap do
       expect(@bitmap.pixels).to eq pixels
     end
   end
+
+  describe '#change_pixel_colours_horizontally' do
+    it 'changes the colour of pixels horizontally' do
+      @bitmap.change_pixel_colours_horizontally(1, 4, 3, 'C')
+      pixels = [['O', 'O', 'O', 'O'],
+                ['O', 'O', 'O', 'O'],
+                ['C', 'C', 'C', 'C'],
+                ['O', 'O', 'O', 'O']]
+      expect(@bitmap.pixels).to eq pixels
+    end
+  end
 end

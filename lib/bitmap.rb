@@ -26,6 +26,14 @@ class Bitmap
     end
   end
 
+  def change_pixel_colours_horizontally(x_start, x_end, y, colour)
+    x = x_start
+    until x > x_end do
+      change_pixel_colour(x, y, colour)
+      x += 1
+    end
+  end
+
 private
     def create_pixels(x, y)
       pixels = []
