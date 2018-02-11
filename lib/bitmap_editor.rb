@@ -19,29 +19,37 @@ private
     def command_interpreter(line)
       case line.slice!(0)
       when 'I'
-        raise 'Bitmap already created' if defined? @bitmap
+        check_bitmap_not_created
         size = line.split(' ')
         @bitmap = Bitmap.new(size)
       when 'L'
-        raise 'A bitmap has to be created first' unless defined? @bitmap
+        check_bitmap_created
         args = line.split(' ')
         @bitmap.change_pixel_colour(args)
       when 'C'
-        raise 'A bitmap has to be created first' unless defined? @bitmap
+        check_bitmap_created
         @bitmap.clear_pixels
       when 'V'
-        raise 'A bitmap has to be created first' unless defined? @bitmap
+        check_bitmap_created
         args = line.split(' ')
         @bitmap.change_pixel_colours_vertically(args)
       when 'H'
-        raise 'A bitmap has to be created first' unless defined? @bitmap
+        check_bitmap_created
         args = line.split(' ')
         @bitmap.change_pixel_colours_horizontally(args)
       when 'S'
-        raise 'A bitmap has to be created first' unless defined? @bitmap
+        check_bitmap_created
         Output.new.show(@bitmap.pixels)
       else
         raise 'unrecognised command :('
       end
+    end
+
+    def check_bitmap_not_created
+      raise 'Bitmap already created' if defined? @bitmap
+    end
+
+    def check_bitmap_created
+      raise 'A bitmap has to be created first' unless defined? @bitmap
     end
 end
