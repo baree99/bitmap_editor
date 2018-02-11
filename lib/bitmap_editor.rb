@@ -23,22 +23,22 @@ private
         size = line.split(' ')
         @bitmap = Bitmap.new(size)
       when 'L'
-        raise "Bitmap hasn't been created" unless defined? @bitmap
+        raise 'A bitmap has to be created first' unless defined? @bitmap
         args = line.split(' ')
         @bitmap.change_pixel_colour(args)
       when 'C'
-        raise "Bitmap hasn't been created" unless defined? @bitmap
+        raise 'A bitmap has to be created first' unless defined? @bitmap
         @bitmap.clear_pixels
       when 'V'
-        raise "Bitmap hasn't been created" unless defined? @bitmap
+        raise 'A bitmap has to be created first' unless defined? @bitmap
         args = line.split(' ')
         @bitmap.change_pixel_colours_vertically(args)
       when 'H'
-        raise "Bitmap hasn't been created" unless defined? @bitmap
+        raise 'A bitmap has to be created first' unless defined? @bitmap
         args = line.split(' ')
         @bitmap.change_pixel_colours_horizontally(args)
       when 'S'
-        raise "Bitmap hasn't been created" unless defined? @bitmap
+        raise 'A bitmap has to be created first' unless defined? @bitmap
         Output.new.show(@bitmap.pixels)
       else
         raise 'unrecognised command :('
