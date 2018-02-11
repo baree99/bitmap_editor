@@ -7,8 +7,9 @@ class Bitmap
     @pixels = create_pixels(x.to_i, y.to_i)
   end
 
-  def change_pixel_colour(x, y, colour)
-    @pixels[y-1][x-1] = colour
+  def change_pixel_colour(args)
+    x, y, colour = args
+    @pixels[y.to_i-1][x.to_i-1] = colour
   end
 
   def clear_pixels
@@ -19,18 +20,20 @@ class Bitmap
     end
   end
 
-  def change_pixel_colours_vertically(x, y_start, y_end, colour)
-    y = y_start
-    until y > y_end do
-      change_pixel_colour(x, y, colour)
+  def change_pixel_colours_vertically(args)
+    x, y_start, y_end, colour = args
+    y = y_start.to_i
+    until y > y_end.to_i do
+      change_pixel_colour([x, y, colour])
       y += 1
     end
   end
 
-  def change_pixel_colours_horizontally(x_start, x_end, y, colour)
-    x = x_start
-    until x > x_end do
-      change_pixel_colour(x, y, colour)
+  def change_pixel_colours_horizontally(args)
+    x_start, x_end, y, colour = args
+    x = x_start.to_i
+    until x > x_end.to_i do
+      change_pixel_colour([x, y, colour])
       x += 1
     end
   end
