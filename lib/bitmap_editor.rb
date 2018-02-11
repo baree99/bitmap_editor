@@ -6,7 +6,7 @@ class BitmapEditor
   attr_reader :bitmap
 
   def run(file)
-    return puts "please provide correct file" if file.nil? || !File.exists?(file)
+    raise 'Please provide correct file' if file.nil? || !File.exists?(file)
 
     File.open(file).each do |line|
       line = line.chomp
@@ -19,23 +19,29 @@ private
     def command_interpreter(line)
       case line.slice!(0)
       when 'I'
+        raise 'Bitmap already created' if defined? @bitmap
         size = line.split(' ')
         @bitmap = Bitmap.new(size)
       when 'L'
+        raise "Bitmap hasn't been created" unless defined? @bitmap
         args = line.split(' ')
         @bitmap.change_pixel_colour(args)
       when 'C'
+        raise "Bitmap hasn't been created" unless defined? @bitmap
         @bitmap.clear_pixels
       when 'V'
+        raise "Bitmap hasn't been created" unless defined? @bitmap
         args = line.split(' ')
         @bitmap.change_pixel_colours_vertically(args)
       when 'H'
+        raise "Bitmap hasn't been created" unless defined? @bitmap
         args = line.split(' ')
         @bitmap.change_pixel_colours_horizontally(args)
       when 'S'
-          Output.new.show(@bitmap.pixels)
+        raise "Bitmap hasn't been created" unless defined? @bitmap
+        Output.new.show(@bitmap.pixels)
       else
-          puts 'unrecognised command :('
+        raise 'unrecognised command :('
       end
     end
 end
