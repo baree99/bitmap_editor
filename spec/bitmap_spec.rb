@@ -7,18 +7,18 @@ describe Bitmap do
 
   describe '#initialize' do
     it 'creates a white bitmap with the given size when initialized' do
-      expected_bitmap = [['O', 'O', 'O'],
+      pixels = [['O', 'O', 'O'],
                 ['O', 'O', 'O']]
-      expect(@bitmap.bitmap).to eq expected_bitmap
+      expect(@bitmap.pixels).to eq pixels
     end
   end
 
   describe '#change_colour' do
     it 'changes the colour in a give position' do
-      @bitmap.change_colour(3, 2, 'C')
-      expected_bitmap = [['O', 'O', 'O'],
+      @bitmap.change_pixel_colour(3, 2, 'C')
+      pixels = [['O', 'O', 'O'],
                          ['O', 'O', 'C']]
-      expect(@bitmap.bitmap).to eq expected_bitmap
+      expect(@bitmap.pixels).to eq pixels
     end
   end
 end
