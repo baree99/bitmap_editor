@@ -23,5 +23,11 @@ describe BitmapEditor do
       expect(@bitmap_editor.bitmap).to receive(:change_pixel_colour).with(['1', '3', 'A'])
       @bitmap_editor.command_interpreter(line)
     end
+
+    it 'delegates to clear_pixels' do
+      line = 'C'
+      expect(@bitmap_editor.bitmap).to receive(:clear_pixels)
+      @bitmap_editor.command_interpreter(line)
+    end
   end
 end
