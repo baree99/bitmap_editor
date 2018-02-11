@@ -20,6 +20,9 @@ class BitmapEditor
       @bitmap.change_pixel_colour(args)
     when 'C'
       @bitmap.clear_pixels
+    when 'V'
+      args = line.split(' ')
+      @bitmap.change_pixel_colours_vertically(args)
     when 'S'
         puts "There is no image"
     else

@@ -24,9 +24,15 @@ describe BitmapEditor do
       @bitmap_editor.command_interpreter(line)
     end
 
-    it 'delegates to clear_pixels' do
+    it 'delegates to clear pixels' do
       line = 'C'
       expect(@bitmap_editor.bitmap).to receive(:clear_pixels)
+      @bitmap_editor.command_interpreter(line)
+    end
+
+    it 'delegates to change pixels vertically' do
+      line = 'V 2 3 6 W'
+      expect(@bitmap_editor.bitmap).to receive(:change_pixel_colours_vertically).with(['2', '3', '6', 'W'])
       @bitmap_editor.command_interpreter(line)
     end
   end
